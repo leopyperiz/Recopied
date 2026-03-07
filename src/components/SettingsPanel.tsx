@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { getSettings, setShortcut } from "../lib/tauri";
-import { Settings, Keyboard, Check, AlertCircle } from "lucide-react";
+import { getSettings, setShortcut, setAutostart } from "../lib/tauri";
+import { Settings, Keyboard, Check, AlertCircle, Power } from "lucide-react";
 
 interface Props {
 	onClose: () => void;
@@ -44,13 +44,17 @@ function keyEventToShortcutString(e: KeyboardEvent): string | null {
 
 export default function SettingsPanel({ onClose }: Props) {
 	const [currentShortcut, setCurrentShortcut] = useState("");
+	const [autostart, setAutostartState] = useState(false);
 	const [recording, setRecording] = useState(false);
 	const [recordedKeys, setRecordedKeys] = useState("");
 	const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 	const [errorMsg, setErrorMsg] = useState("");
 
 	useEffect(() => {
-		getSettings().then((s) => setCurrentShortcut(s.shortcut));
+		getSettings().then((s) => {
+			setCurrentShortcut(s.shortcut);
+			setAutostartState(s.autostart);
+		});
 	}, []);
 
 	const handleKeyDown = useCallback(
@@ -113,7 +117,7 @@ export default function SettingsPanel({ onClose }: Props) {
 						<span className="text-text-primary text-[12px] font-medium">Toggle Shortcut</span>
 					</div>
 
-					<div className="bg-bg-secondary border-border rounded-[var(--radius-card)] border p-3">
+					<div className="bg-bg-secondary border-border rounded-(--radius-card) border p-3">
 						<div className="mb-2 flex items-center justify-between">
 							<span className="text-text-secondary text-[11px]">Current shortcut:</span>
 							<kbd className="bg-bg-active text-text-primary rounded px-2 py-0.5 font-mono text-[11px]">{currentShortcut}</kbd>
@@ -123,7 +127,7 @@ export default function SettingsPanel({ onClose }: Props) {
 							<div className="mt-3">
 								<div className="bg-bg-primary border-accent/40 rounded border p-3 text-center">
 									<p className="text-text-secondary mb-2 text-[11px]">Press your desired key combination</p>
-									<kbd className="bg-bg-active text-accent inline-block min-h-[28px] rounded px-3 py-1 font-mono text-[13px]">{recordedKeys || "..."}</kbd>
+									<kbd className="bg-bg-active text-accent inline-block min-h-7 rounded px-3 py-1 font-mono text-[13px]">{recordedKeys || "..."}</kbd>
 								</div>
 								<div className="mt-2 flex gap-2">
 									<button onClick={handleSave} disabled={!recordedKeys} className="bg-accent/20 text-accent hover:bg-accent/30 flex flex-1 cursor-pointer items-center justify-center gap-1 rounded py-1.5 text-[11px] font-medium transition-colors disabled:opacity-40">
@@ -162,6 +166,34 @@ export default function SettingsPanel({ onClose }: Props) {
 					</div>
 
 					<p className="text-text-muted mt-2 text-[10px]">Use a combination like Ctrl+Alt+V, Super+V, or Alt+Shift+C. Avoid shortcuts already used by your system or terminal.</p>
+				</div>
+
+				{/* Autostart setting */}
+				<div className="mb-4">
+					<div className="mb-2 flex items-center gap-2">
+						<Power size={13} className="text-text-secondary" />
+						<span className="text-text-primary text-[12px] font-medium">Start on Login</span>
+					</div>
+
+					<div className="bg-bg-secondary border-border rounded-(--radius-card) border p-3">
+						<div className="flex items-center justify-between">
+							<span className="text-text-secondary text-[11px]">Launch Recopied automatically when you log in</span>
+							<button
+								onClick={async () => {
+									const next = !autostart;
+									try {
+										await setAutostart(next);
+										setAutostartState(next);
+									} catch (err) {
+										console.error("Failed to toggle autostart:", err);
+									}
+								}}
+								className={`relative h-5 w-9 cursor-pointer rounded-full transition-colors ${autostart ? "bg-accent" : "bg-bg-active"}`}
+							>
+								<span className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform ${autostart ? "translate-x-4" : ""}`} />
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

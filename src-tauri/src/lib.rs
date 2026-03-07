@@ -173,6 +173,7 @@ pub fn run() {
             commands::set_window_mode,
             commands::get_settings,
             commands::set_shortcut,
+            commands::set_autostart,
         ])
         .run(tauri::generate_context!())
         .expect("Error while running Recopied");

@@ -7,12 +7,15 @@ const DEFAULT_SHORTCUT: &str = "Ctrl+Shift+V";
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AppSettings {
     pub shortcut: String,
+    #[serde(default)]
+    pub autostart: bool,
 }
 
 impl Default for AppSettings {
     fn default() -> Self {
         Self {
             shortcut: DEFAULT_SHORTCUT.to_string(),
+            autostart: false,
         }
     }
 }
@@ -23,6 +26,43 @@ fn settings_path() -> PathBuf {
         .join("recopied");
     fs::create_dir_all(&data_dir).ok();
     data_dir.join("settings.json")
+}
+
+fn autostart_path() -> PathBuf {
+    dirs::config_dir()
+        .unwrap_or_else(|| PathBuf::from("."))
+        .join("autostart")
+        .join("recopied.desktop")
+}
+
+pub fn set_autostart(enabled: bool) -> Result<(), String> {
+    let desktop_path = autostart_path();
+
+    if enabled {
+        // Find the executable path
+        let exe = std::env::current_exe().map_err(|e| e.to_string())?;
+        let autostart_dir = desktop_path.parent().unwrap();
+        fs::create_dir_all(autostart_dir).map_err(|e| e.to_string())?;
+
+        let desktop_entry = format!(
+            "[Desktop Entry]\n\
+             Type=Application\n\
+             Name=Recopied\n\
+             Comment=Clipboard history manager\n\
+             Exec={}\n\
+             Icon=recopied\n\
+             Terminal=false\n\
+             Categories=Utility;\n\
+             StartupNotify=false\n\
+             X-GNOME-Autostart-enabled=true\n",
+            exe.display()
+        );
+        fs::write(&desktop_path, desktop_entry).map_err(|e| e.to_string())?;
+    } else if desktop_path.exists() {
+        fs::remove_file(&desktop_path).map_err(|e| e.to_string())?;
+    }
+
+    Ok(())
 }
 
 pub fn load_settings() -> AppSettings {

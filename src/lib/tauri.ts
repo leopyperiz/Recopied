@@ -39,6 +39,7 @@ export async function setWindowMode(fullscreen: boolean): Promise<void> {
 
 export interface AppSettings {
 	shortcut: string;
+	autostart: boolean;
 }
 
 export async function getSettings(): Promise<AppSettings> {
@@ -47,4 +48,8 @@ export async function getSettings(): Promise<AppSettings> {
 
 export async function setShortcut(shortcut: string): Promise<void> {
 	return invoke("set_shortcut", { shortcut });
+}
+
+export async function setAutostart(enabled: boolean): Promise<void> {
+	return invoke("set_autostart", { enabled });
 }

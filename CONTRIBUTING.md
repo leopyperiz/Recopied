@@ -10,6 +10,7 @@ Thank you for your interest in contributing to Recopied! This guide will help yo
 - **Node.js** ≥ 18 — [Install](https://nodejs.org)
 - **Tauri v2 CLI** — `cargo install tauri-cli --version "^2"`
 - **System libraries** (Debian/Ubuntu/Mint):
+
   ```bash
   sudo apt install libgtk-3-dev libwebkit2gtk-4.1-dev librsvg2-dev patchelf xclip
   ```
@@ -44,16 +45,20 @@ cargo tauri dev
 
 1. **Fork** the repository
 2. Create a **feature branch** from `main`:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
+
 3. Make your changes
 4. **Test** your changes with `cargo tauri dev`
 5. **Commit** with a clear message:
-   ```
+
+   ```text
    feat: add Wayland clipboard support
    fix: prevent duplicate items on rapid copy
    ```
+
 6. **Push** to your fork and open a **Pull Request** against `main`
 
 ### Commit Message Format
@@ -61,7 +66,7 @@ cargo tauri dev
 Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 | Prefix | Usage |
-|--------|-------|
+| -------- | ------- |
 | `feat:` | New feature |
 | `fix:` | Bug fix |
 | `docs:` | Documentation only |
@@ -80,7 +85,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 ## Project Architecture
 
 | Directory | Description |
-|-----------|-------------|
+| ----------- | ------------- |
 | `src/` | React frontend (components, types, IPC wrappers) |
 | `src-tauri/src/` | Rust backend (clipboard watcher, DB, commands, settings) |
 | `src-tauri/src/clipboard/` | Clipboard monitoring via `xclip` |

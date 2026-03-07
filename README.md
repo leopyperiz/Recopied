@@ -52,7 +52,10 @@ Recopied captures everything you copy — text and images — and lets you recal
 - **Tauri v2 CLI** — `cargo install tauri-cli --version "^2"`
 - **System dependencies** (Debian/Ubuntu/Mint):
   ```bash
+  # X11
   sudo apt install libgtk-3-dev libwebkit2gtk-4.1-dev librsvg2-dev patchelf xclip
+  # Wayland (additional)
+  sudo apt install wl-clipboard
   ```
 
 ## Getting Started

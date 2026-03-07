@@ -8,6 +8,20 @@ use log::{info, error, debug};
 use crate::clipboard::types::NewClipboardItem;
 use crate::db;
 
+#[derive(Debug, Clone, Copy, PartialEq)]
+enum DisplayServer {
+    X11,
+    Wayland,
+}
+
+fn detect_display_server() -> DisplayServer {
+    if std::env::var("WAYLAND_DISPLAY").is_ok() {
+        DisplayServer::Wayland
+    } else {
+        DisplayServer::X11
+    }
+}
+
 pub struct ClipboardWatcher {
     last_hash: Arc<Mutex<String>>,
 }
@@ -23,11 +37,12 @@ impl ClipboardWatcher {
         let last_hash = self.last_hash.clone();
 
         thread::spawn(move || {
-            info!("Clipboard watcher started (using xclip/xsel)");
+            let display = detect_display_server();
+            info!("Clipboard watcher started (display server: {:?})", display);
 
             loop {
-                // Read text clipboard via xclip (works reliably on X11 in background)
-                match read_clipboard_text() {
+                // Read text clipboard
+                match read_clipboard_text(display) {
                     Ok(text) if !text.is_empty() => {
                         let hash = compute_hash(text.as_bytes());
                         let mut last = last_hash.lock().unwrap();
@@ -62,8 +77,8 @@ impl ClipboardWatcher {
                     }
                 }
 
-                // Read image clipboard via xclip
-                match read_clipboard_image() {
+                // Read image clipboard
+                match read_clipboard_image(display) {
                     Ok(image_bytes) if !image_bytes.is_empty() => {
                         let hash = compute_hash(&image_bytes);
                         let mut last = last_hash.lock().unwrap();
@@ -103,24 +118,34 @@ impl ClipboardWatcher {
     }
 }
 
-/// Read text from clipboard using xclip (reliable on X11 even in background threads)
-fn read_clipboard_text() -> Result<String, Box<dyn std::error::Error>> {
-    let output = Command::new("xclip")
-        .args(["-selection", "clipboard", "-o"])
-        .output()?;
+/// Read text from clipboard (supports X11 via xclip and Wayland via wl-paste)
+fn read_clipboard_text(display: DisplayServer) -> Result<String, Box<dyn std::error::Error>> {
+    let output = match display {
+        DisplayServer::X11 => Command::new("xclip")
+            .args(["-selection", "clipboard", "-o"])
+            .output()?,
+        DisplayServer::Wayland => Command::new("wl-paste")
+            .args(["--no-newline", "--type", "text/plain"])
+            .output()?,
+    };
 
     if output.status.success() {
         Ok(String::from_utf8_lossy(&output.stdout).to_string())
     } else {
-        Err("xclip returned non-zero status".into())
+        Err("Clipboard read returned non-zero status".into())
     }
 }
 
-/// Read image from clipboard using xclip (PNG format)
-fn read_clipboard_image() -> Result<Vec<u8>, Box<dyn std::error::Error>> {
-    let output = Command::new("xclip")
-        .args(["-selection", "clipboard", "-t", "image/png", "-o"])
-        .output()?;
+/// Read image from clipboard (PNG format, supports X11 and Wayland)
+fn read_clipboard_image(display: DisplayServer) -> Result<Vec<u8>, Box<dyn std::error::Error>> {
+    let output = match display {
+        DisplayServer::X11 => Command::new("xclip")
+            .args(["-selection", "clipboard", "-t", "image/png", "-o"])
+            .output()?,
+        DisplayServer::Wayland => Command::new("wl-paste")
+            .args(["--no-newline", "--type", "image/png"])
+            .output()?,
+    };
 
     if output.status.success() && !output.stdout.is_empty() {
         Ok(output.stdout)

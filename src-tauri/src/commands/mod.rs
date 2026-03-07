@@ -138,3 +138,14 @@ pub async fn set_shortcut(app: tauri::AppHandle, shortcut: String) -> Result<(),
 
     Ok(())
 }
+
+#[command]
+pub fn set_autostart(enabled: bool) -> Result<(), String> {
+    settings::set_autostart(enabled)?;
+
+    let mut current = settings::load_settings();
+    current.autostart = enabled;
+    settings::save_settings(&current)?;
+
+    Ok(())
+}
