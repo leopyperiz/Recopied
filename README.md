@@ -6,6 +6,10 @@
 
 <img src="image.png" alt="Recopied Screenshot" width="380" />
 
+### Demo
+
+<video src="https://github.com/mrbeandev/Recopied/raw/main/demo.mp4" width="600" controls></video>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Tauri v2](https://img.shields.io/badge/Tauri-v2-orange)](https://v2.tauri.app)
 [![Made with Rust](https://img.shields.io/badge/Made%20with-Rust-dea584)](https://www.rust-lang.org)
