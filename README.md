@@ -8,7 +8,7 @@
 
 ### Demo
 
-https://github.com/user-attachments/assets/2eec33d6-31aa-400b-a8e0-4e2ab62edba0
+https://github.com/user-attachments/assets/cc34254d-d99f-4c64-afad-85a6aac9f2fd
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Tauri v2](https://img.shields.io/badge/Tauri-v2-orange)](https://v2.tauri.app)
