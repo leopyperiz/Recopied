@@ -4,7 +4,7 @@
 
 **A lightweight clipboard history manager for Linux — inspired by Windows `Win+V`**
 
-<img src="image.png" alt="Recopied Screenshot" width="380" />
+<img src="screenshot.png" alt="Recopied Screenshot" width="380" />
 
 ### Demo
 
