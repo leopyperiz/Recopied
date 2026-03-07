@@ -1,7 +1,7 @@
 {
 	"$schema": "../gen/schemas/desktop-schema.json",
 	"identifier": "default",
-	"description": "ClipIt capabilities",
+	"description": "Recopied capabilities",
 	"windows": ["main"],
 	"permissions": ["core:default", "clipboard-manager:allow-read-text", "clipboard-manager:allow-write-text", "clipboard-manager:allow-read-image", "clipboard-manager:allow-write-image", "global-shortcut:allow-register", "global-shortcut:allow-unregister", "global-shortcut:allow-is-registered", "shell:allow-execute", "shell:allow-spawn"]
 }

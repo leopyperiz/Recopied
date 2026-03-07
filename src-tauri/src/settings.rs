@@ -20,7 +20,7 @@ impl Default for AppSettings {
 fn settings_path() -> PathBuf {
     let data_dir = dirs::data_dir()
         .unwrap_or_else(|| PathBuf::from("."))
-        .join("clipit");
+        .join("recopied");
     fs::create_dir_all(&data_dir).ok();
     data_dir.join("settings.json")
 }

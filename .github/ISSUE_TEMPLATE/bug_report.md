@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report a bug to help us improve ClipIt
+about: Report a bug to help us improve Recopied
 title: "[Bug] "
 labels: bug
 assignees: ""
@@ -29,7 +29,7 @@ What actually happened.
 - **OS**: (e.g., Ubuntu 24.04, Linux Mint 22)
 - **Desktop Environment**: (e.g., GNOME, Cinnamon, KDE)
 - **Display Server**: (X11 / Wayland)
-- **ClipIt Version**: (e.g., 0.1.0)
+- **Recopied Version**: (e.g., 1.0.0)
 
 ## Screenshots
 

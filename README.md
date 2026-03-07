@@ -1,10 +1,10 @@
 <div align="center">
 
-# ClipIt
+# Recopied
 
 **A lightweight clipboard history manager for Linux — inspired by Windows `Win+V`**
 
-<img src="image.png" alt="ClipIt Screenshot" width="380" />
+<img src="image.png" alt="Recopied Screenshot" width="380" />
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Tauri v2](https://img.shields.io/badge/Tauri-v2-orange)](https://v2.tauri.app)
@@ -16,7 +16,7 @@
 
 ## About
 
-ClipIt captures everything you copy — text and images — and lets you recall any item with a global keyboard shortcut. It's designed to feel like the native Windows clipboard manager (`Win+V`), but built from the ground up for Linux.
+Recopied captures everything you copy — text and images — and lets you recall any item with a global keyboard shortcut. It's designed to feel like the native Windows clipboard manager (`Win+V`), but built from the ground up for Linux.
 
 ### Features
 
@@ -59,8 +59,8 @@ ClipIt captures everything you copy — text and images — and lets you recall 
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/clipit.git
-cd clipit
+git clone https://github.com/YOUR_USERNAME/recopied.git
+cd recopied
 
 # Install frontend dependencies
 npm install
@@ -97,7 +97,7 @@ This produces:
 
 ## Configuration
 
-Settings are stored at `~/.local/share/clipit/settings.json`:
+Settings are stored at `~/.local/share/recopied/settings.json`:
 
 ```json
 {
@@ -105,12 +105,12 @@ Settings are stored at `~/.local/share/clipit/settings.json`:
 }
 ```
 
-Clipboard history is stored in a SQLite database at `~/.local/share/clipit/clipit.db`. Images are saved to `~/.local/share/clipit/images/`.
+Clipboard history is stored in a SQLite database at `~/.local/share/recopied/recopied.db`. Images are saved to `~/.local/share/recopied/images/`.
 
 ## Project Structure
 
 ```
-clipit/
+recopied/
 ├── src/                          # React frontend
 │   ├── components/               # UI components
 │   │   ├── ClipboardPopup.tsx    # Main popup with search + item list
@@ -141,7 +141,7 @@ clipit/
 
 ## Releasing
 
-ClipIt uses [Semantic Versioning](https://semver.org/) with versions synced across `package.json`, `src-tauri/Cargo.toml`, and `src-tauri/tauri.conf.json`.
+Recopied uses [Semantic Versioning](https://semver.org/) with versions synced across `package.json`, `src-tauri/Cargo.toml`, and `src-tauri/tauri.conf.json`.
 
 ### How to release a new version
 

@@ -1,8 +1,8 @@
 [package]
-name = "clipit"
+name = "recopied"
 version = "1.0.0"
 description = "A lightweight Linux clipboard manager"
-authors = ["ClipIt"]
+authors = ["Recopied"]
 license = "MIT"
 repository = ""
 edition = "2021"

@@ -141,7 +141,7 @@ fn save_image_bytes(
 ) -> Result<String, Box<dyn std::error::Error>> {
     let data_dir = dirs::data_dir()
         .ok_or("Could not find data directory")?
-        .join("clipit")
+        .join("recopied")
         .join("images");
     std::fs::create_dir_all(&data_dir)?;
 

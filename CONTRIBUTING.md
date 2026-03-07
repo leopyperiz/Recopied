@@ -1,6 +1,6 @@
-# Contributing to ClipIt
+# Contributing to Recopied
 
-Thank you for your interest in contributing to ClipIt! This guide will help you get started.
+Thank you for your interest in contributing to Recopied! This guide will help you get started.
 
 ## Development Setup
 
@@ -17,8 +17,8 @@ Thank you for your interest in contributing to ClipIt! This guide will help you 
 ### Running Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/clipit.git
-cd clipit
+git clone https://github.com/YOUR_USERNAME/recopied.git
+cd recopied
 npm install
 cargo tauri dev
 ```
@@ -27,7 +27,7 @@ cargo tauri dev
 
 ### Reporting Bugs
 
-1. Check existing [issues](https://github.com/YOUR_USERNAME/clipit/issues) to avoid duplicates
+1. Check existing [issues](https://github.com/YOUR_USERNAME/recopied/issues) to avoid duplicates
 2. Open a new issue using the **Bug Report** template
 3. Include:
    - Linux distribution and desktop environment
@@ -100,7 +100,7 @@ Here are some areas where help is especially welcome:
 
 ## Versioning & Releases
 
-ClipIt follows [Semantic Versioning](https://semver.org/). The version is tracked in three files:
+Recopied follows [Semantic Versioning](https://semver.org/). The version is tracked in three files:
 
 - `package.json`
 - `src-tauri/Cargo.toml`

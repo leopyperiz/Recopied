@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Suggest a new feature for ClipIt
+about: Suggest a new feature for Recopied
 title: "[Feature] "
 labels: enhancement
 assignees: ""

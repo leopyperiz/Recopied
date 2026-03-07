@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "ClipIt",
+  "productName": "Recopied",
   "version": "1.0.0",
-  "identifier": "com.clipit.app",
+  "identifier": "com.recopied.app",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",
@@ -13,7 +13,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "ClipIt",
+        "title": "Recopied",
         "width": 380,
         "height": 560,
         "resizable": false,
@@ -30,7 +30,7 @@
       "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost; style-src 'self' 'unsafe-inline'",
       "assetProtocol": {
         "enable": true,
-        "scope": ["$HOME/.local/share/clipit/**"]
+        "scope": ["$HOME/.local/share/recopied/**"]
       }
     }
   },

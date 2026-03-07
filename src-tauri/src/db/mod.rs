@@ -29,7 +29,7 @@ pub fn init_db(db_path: &str) -> Result<(), rusqlite::Error> {
 pub fn get_db_path() -> String {
     let data_dir = dirs::data_dir()
         .unwrap_or_else(|| std::path::PathBuf::from("."))
-        .join("clipit");
+        .join("recopied");
     std::fs::create_dir_all(&data_dir).ok();
-    data_dir.join("clipit.db").to_string_lossy().to_string()
+    data_dir.join("recopied.db").to_string_lossy().to_string()
 }

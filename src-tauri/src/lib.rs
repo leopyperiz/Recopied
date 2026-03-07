@@ -106,7 +106,7 @@ pub fn run() {
             use tauri::menu::{MenuBuilder, MenuItemBuilder};
             use tauri::tray::TrayIconBuilder;
 
-            let show_item = MenuItemBuilder::with_id("show", "Show ClipIt").build(app)?;
+            let show_item = MenuItemBuilder::with_id("show", "Show Recopied").build(app)?;
             let quit_item = MenuItemBuilder::with_id("quit", "Quit").build(app)?;
             let tray_menu = MenuBuilder::new(app)
                 .item(&show_item)
@@ -116,7 +116,7 @@ pub fn run() {
 
             let _tray = TrayIconBuilder::new()
                 .menu(&tray_menu)
-                .tooltip("ClipIt — Clipboard Manager")
+                .tooltip("Recopied — Clipboard Manager")
                 .icon(app.default_window_icon().cloned().unwrap())
                 .on_menu_event(|app, event| match event.id().as_ref() {
                     "show" => toggle_window(app),
@@ -135,7 +135,7 @@ pub fn run() {
             // Start clipboard watcher
             let watcher = ClipboardWatcher::new();
             watcher.start(db_path.clone());
-            info!("ClipIt started — clipboard watcher active");
+            info!("Recopied started — clipboard watcher active");
 
             // Register global shortcut from saved settings
             use tauri_plugin_global_shortcut::GlobalShortcutExt;
@@ -175,5 +175,5 @@ pub fn run() {
             commands::set_shortcut,
         ])
         .run(tauri::generate_context!())
-        .expect("Error while running ClipIt");
+        .expect("Error while running Recopied");
 }

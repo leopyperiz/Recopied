@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ClipIt version bump script
+# Recopied version bump script
 # Usage: ./scripts/bump-version.sh <new_version>
 # Example: ./scripts/bump-version.sh 1.2.0
 #
