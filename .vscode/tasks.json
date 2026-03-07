@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ClipIt: Dev",
+      "type": "shell",
+      "command": "cargo tauri dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "ClipIt: Restart",
+      "type": "shell",
+      "command": "pkill -f 'target/debug/clipit' 2>/dev/null; pkill -f 'cargo-tauri' 2>/dev/null; pkill -f 'node.*vite' 2>/dev/null; sleep 2; cargo tauri dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "ClipIt: Stop",
+      "type": "shell",
+      "command": "pkill -f 'target/debug/clipit' 2>/dev/null; pkill -f 'cargo-tauri' 2>/dev/null; pkill -f 'node.*vite' 2>/dev/null; echo 'Stopped'",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}

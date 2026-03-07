@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+	--spacing: 0.25rem;
+	--color-bg-primary: #202020;
+	--color-bg-secondary: #2b2b2b;
+	--color-bg-hover: #333333;
+	--color-bg-active: #3d3d3d;
+	--color-bg-card: #2b2b2b;
+	--color-bg-card-hover: #353535;
+	--color-text-primary: #f5f5f5;
+	--color-text-secondary: #a0a0a0;
+	--color-text-muted: #6b6b6b;
+	--color-accent: #60cdff;
+	--color-accent-hover: #7dd5ff;
+	--color-accent-dim: #0078d4;
+	--color-border: #383838;
+	--color-border-subtle: #2e2e2e;
+	--color-pin: #fbbf24;
+	--color-danger: #ff6b6b;
+	--color-danger-hover: #ff4444;
+	--radius-popup: 8px;
+	--radius-item: 4px;
+	--radius-card: 6px;
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+	overflow: hidden;
+	background: transparent;
+	font-family:
+		"Segoe UI",
+		system-ui,
+		-apple-system,
+		sans-serif;
+	font-size: 13px;
+	color: var(--color-text-primary);
+}
+
+[data-tauri-drag-region] {
+	-webkit-app-region: drag;
+}
+
+/* Make text in items selectable */
+.selectable {
+	-webkit-user-select: text;
+	user-select: text;
+}
+
+::-webkit-scrollbar {
+	width: 4px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-bg-active);
+	border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-text-muted);
+}
+
+/* Smooth transitions */
+.clip-item {
+	transition:
+		background-color 0.1s ease,
+		border-color 0.1s ease,
+		transform 0.1s ease;
+}
+
+.clip-item:active {
+	transform: scale(0.99);
+}
+
+/* Fade-in animation for window content */
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-slide-up {
+	animation: slideUp 0.15s ease-out;
+}
