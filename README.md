@@ -153,21 +153,19 @@ Recopied uses [Semantic Versioning](https://semver.org/) with versions synced ac
 ### How to release a new version
 
 ```bash
-# 1. Bump version in all config files
-./scripts/bump-version.sh 1.1.0
+# 1. Update CHANGELOG.md with the new version's changes
 
-# 2. Update CHANGELOG.md with the new version's changes
-
-# 3. Commit and tag
-git add -A
-git commit -m "chore: bump version to 1.1.0"
-git tag v1.1.0
-
-# 4. Push (triggers GitHub Actions release build)
-git push origin main --tags
+# 2. Run the release script — it does everything in one shot:
+./scripts/release.sh 1.1.0
 ```
 
-The release workflow builds `.deb` and `.AppImage` packages for `x86_64` and `aarch64`, then creates a draft GitHub Release with the artifacts attached.
+The script will:
+- Bump the version in all config files
+- Run `cargo tauri build` to produce `.deb` and `.AppImage` bundles
+- Commit, tag, and push to GitHub
+- Create a **draft** GitHub Release with the built artifacts attached
+
+Open the draft release on GitHub, review the notes, then publish it.
 
 See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
