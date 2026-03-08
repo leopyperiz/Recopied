@@ -178,3 +178,17 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+## ⭐ Support Recopied
+
+If Recopied saved you from installing yet another bloated tool — or if you just appreciate a Rust+Tauri project that does one thing well — please consider starring the repo. It genuinely helps more Linux users discover it.
+
+[![Star on GitHub](https://img.shields.io/github/stars/mrbeandev/Recopied?style=for-the-badge&logo=github&label=Star%20this%20repo&color=FFD700)](https://github.com/mrbeandev/Recopied/stargazers)
+
+**Every star tells GitHub's algorithm this is worth surfacing. Thank you. 🙏**
+
+</div>
