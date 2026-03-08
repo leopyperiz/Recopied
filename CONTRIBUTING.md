@@ -18,7 +18,7 @@ Thank you for your interest in contributing to Recopied! This guide will help yo
 ### Running Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/recopied.git
+git clone https://github.com/mrbeandev/recopied.git
 cd recopied
 npm install
 cargo tauri dev
@@ -28,7 +28,7 @@ cargo tauri dev
 
 ### Reporting Bugs
 
-1. Check existing [issues](https://github.com/YOUR_USERNAME/recopied/issues) to avoid duplicates
+1. Check existing [issues](https://github.com/mrbeandev/recopied/issues) to avoid duplicates
 2. Open a new issue using the **Bug Report** template
 3. Include:
    - Linux distribution and desktop environment

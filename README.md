@@ -66,7 +66,7 @@ Recopied captures everything you copy — text and images — and lets you recal
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/recopied.git
+git clone https://github.com/mrbeandev/recopied.git
 cd recopied
 
 # Install frontend dependencies
