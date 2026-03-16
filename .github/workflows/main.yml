@@ -37,5 +37,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Recopied-Mint22-Build
-          path: src-tauri/target/release/bundle/appimage/Recopied_1.0.0_amd64.AppImage
-          path: src-tauri/target/release/bundle/deb/Recopied_1.0.0_amd64.deb
+          path: |
+            src-tauri/target/release/bundle/appimage/Recopied_1.0.0_amd64.AppImage
+            src-tauri/target/release/bundle/deb/Recopied_1.0.0_amd64.deb
