@@ -26,20 +26,13 @@ jobs:
       - name: Install Frontend Deps
         run: npm install
 
-      # Using the official Tauri builder action
       - name: Build App
-        uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: --bundles deb,appimage
+        run: npx tauri build --bundles deb,appimage
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Recopied-Mint22-Build
-          path: "**/*.deb"
-          # Or if you want the AppImage too:
-          # path: |
-          #   **/*.deb
-          #   **/*.AppImage
+          path: |
+            src-tauri/target/release/bundle/deb/*.deb
+            src-tauri/target/release/bundle/appimage/*.AppImage
