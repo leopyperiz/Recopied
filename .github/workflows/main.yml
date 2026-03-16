@@ -1,9 +1,12 @@
-name: Build Recopied
-on: [workflow_dispatch] # This lets you start it manually
+name: Build Recopied for Mint 22
+on: [workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-24.04
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
@@ -13,7 +16,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
       - name: Install Frontend Deps
@@ -23,5 +26,5 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Recopied-Linux-Build
+          name: Recopied-Mint22-Build
           path: src-tauri/target/release/bundle/
