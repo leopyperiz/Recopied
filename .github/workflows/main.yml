@@ -34,5 +34,5 @@ jobs:
         with:
           name: Recopied-Mint22-Build
           path: |
-            src-tauri/target/x86_64-unknown-linux-gnu/release/bundle/deb/recopied_1.0.0_amd64.deb
-            src-tauri/target/x86_64-unknown-linux-gnu/release/bundle/appimage/Recopied_1.0.0_amd64.AppImage
+            src-tauri/target/release/bundle/deb/recopied_1.0.0_amd64.deb
+            src-tauri/target/release/bundle/appimage/recopied_1.0.0_amd64.AppImage
